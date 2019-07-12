@@ -52,7 +52,6 @@ axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
       headline.classList.add('headline')
       author.classList.add('author')
       imgContainer.classList.add('img-container')
-      //img.classList.add('img')
       author.classList.add('author')
 
       //content

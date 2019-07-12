@@ -42,6 +42,7 @@ function createHeader(data) {
   title.textContent = `${data.title}`;
   temp.textContent = `Todays temp: ${data.temp}`;
 
+    //append
   headerContainer.appendChild(header)
   header.appendChild(date)
   header.appendChild(title)
@@ -50,15 +51,3 @@ function createHeader(data) {
   return header
 }
 
-
-
-
-
-// const header = document.querySelector('.header');
-// function createHeader(){
-//     const content = document.createElement('p');
-//     const date = document.createTextNode('Todays date is March 28th');
-//     content.appendChild(date);
-//     document.header.appendChild(content);
-// }
-// createHeader();

@@ -13,7 +13,6 @@ const topics = document.querySelector('.topics')
 
 axios.get(`https://lambda-times-backend.herokuapp.com/topics`)
   .then(data => {
-    // 1. (see above)
     // Handles Success: here's where we get the results from server
     console.log('Lambda', data)
     const topicArray = data.data.topics
