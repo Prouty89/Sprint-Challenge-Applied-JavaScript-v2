@@ -8,16 +8,23 @@
 //    <span class="temp">98°</span>
 //  </div >
 // And add it to the DOM in the .header-container component
-const headerContainer = document.getElementsByClassName('.headerContainer').appendChild(headerContainer)
+const data = [
+    {
+    date: 'March 28th',
+    title: 'Lambda Times',
+    temp: '98°'
+    }
+];
 
-//headerContainer.appendChild(headerCont)
-// data.forEach( (date, title, temp) => {
-//     let createHeader = buttonCreator(arrayItem);
+const headerContainer = document.querySelector('.header-container')
+data.forEach(data => {
+    headerContainer.appendChild(createHeader(data))
+  })
+//headerContainer.appendChild(data)
 
-//     parent.appendChild(newButton);
-// }}
 
-function createHeader() {
+
+function createHeader(data) {
 
     //create elements
   const header = document.createElement('div')
@@ -27,18 +34,31 @@ function createHeader() {
 
     //class names
   header.classList.add('header')
-  date.classList.add('span')
-  title.classList.add('h1')
+  date.classList.add('date')
   temp.classList.add('temp')
 
     //content
-  date.textContent = 'MARCH 28';
-  title.textContent = 'Lambda Times';
-  temp.textContent = '98';
+  date.textContent = `Todays date: ${data.date}`;
+  title.textContent = `${data.title}`;
+  temp.textContent = `Todays temp: ${data.temp}`;
 
+  headerContainer.appendChild(header)
   header.appendChild(date)
   header.appendChild(title)
   header.appendChild(temp)
 
   return header
 }
+
+
+
+
+
+// const header = document.querySelector('.header');
+// function createHeader(){
+//     const content = document.createElement('p');
+//     const date = document.createTextNode('Todays date is March 28th');
+//     content.appendChild(date);
+//     document.header.appendChild(content);
+// }
+// createHeader();
