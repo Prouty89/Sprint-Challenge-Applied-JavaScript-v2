@@ -16,12 +16,9 @@ axios.get(`https://lambda-times-backend.herokuapp.com/topics`)
     // 1. (see above)
     // Handles Success: here's where we get the results from server
     console.log('Lambda', data)
-    const topic = data.data.topics
-    topic.forEach(item => {
-      // 2. (see above)
-      const element = newTab(item)
-      // 3. (see above)
-      topics.appendChild(element)
+    const topicArray = data.data.topics
+    topicArray.forEach(topic => {
+      topics.appendChild(newTab(topic))
     })
   })
 
@@ -30,15 +27,15 @@ axios.get(`https://lambda-times-backend.herokuapp.com/topics`)
         console.log('API Malfunction', error)
       })
     
-function newTab() {
+function newTab(topic) {
 const tab = document.createElement('div')
 
 
 // set the styles
-tab.classList.add('tabs-topics')
+tab.classList.add('tab')
 
 //set content
-tab.textContent = `${topics}`;
+tab.textContent = `${topic}`;
 
 // put together
 return tab
