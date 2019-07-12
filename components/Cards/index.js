@@ -23,14 +23,14 @@ axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
   .then(data => {
     // Handles Success: here's where we get the results from server
     console.log('ARTICLES', data)
-    const box = data.data.articles.bootstrap
-    box.forEach(item => {
-      // 2. (see above)
-      const element = newCard(item)
-      // 3. (see above)
-      cards.appendChild(element)
+    const articlesEl = data.data.articles
+    for (let topic in articlesEl) {
+        articlesEl[topic].forEach(article => {
+            cardsContainer.appendChild(createCard(article, topic))
+        })
+    }
     })
-  })
+  
 
   .catch(error => {
     // Handles failure:
@@ -38,25 +38,35 @@ axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
   })
 
 
-  function createCard () {
+  function createCard (article, topic) {
       //element creation
-      const card = document.createElements('div')
+      const card = document.createElement('div')
       const headline = document.createElement('div')
       const author = document.createElement('div')
       const imgContainer = document.createElement('div')
-      const img = document.createElement('source')
-      const authors = document.createElement('span')
+      const img = document.createElement('img')
+      const authorName = document.createElement('span')
 
       //styles
       card.classList.add('card')
       headline.classList.add('headline')
-      author.classList.add('author-span')
-      imgContainer.classList.add('image-container')
-      img.classList.add('img')
-      authors.classList.add('author')
+      author.classList.add('author')
+      imgContainer.classList.add('img-container')
+      //img.classList.add('img')
+      author.classList.add('author')
 
       //content
-      headline.textContent = `${data.data.headline}`
+      headline.textContent = `${article.headline}`
+      img.src = `${article.authorPhoto}`
+      authorName.textContent = `Written by: ${article.authorName}`
+
+      //append
+      card.appendChild(headline)
+      card.appendChild(author)
+      author.appendChild(imgContainer)
+      author.appendChild(authorName)
+      imgContainer.appendChild(img)
+
 
       return card
   }
